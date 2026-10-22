@@ -68,14 +68,14 @@
 </head>
 <body class="min-h-screen flex flex-col selection:bg-blush-200 selection:text-blush-900">
 
-    <!-- 1. THANH CÔNG CỤ ADMIN (CHỈ HIỆN KHI ĐĂNG NHẬP) -->
+    <!-- 1. THANH CÔNG CỤ ADMIN -->
     <div id="admin-top-bar" class="bg-gradient-to-r from-blush-800 via-blush-700 to-blush-800 text-white text-xs py-2.5 px-4 shadow-lg sticky top-0 z-50 border-b border-pink-400/30 hidden">
         <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
             <div class="flex items-center gap-2.5">
                 <span class="bg-white text-blush-700 font-extrabold px-2.5 py-1 rounded-full text-[11px] flex items-center gap-1 shadow-sm">
-                    <i class="fa-solid fa-cloud-arrow-up text-emerald-600"></i> ADMIN ONLINE (TỰ ĐỘNG LƯU ĐÁM MÂY)
+                    <i class="fa-solid fa-cloud-arrow-up"></i> ĐỒNG BỘ ĐÁM MÂY TRỰC TIẾP (LIVE ADMIN)
                 </span>
-                <span id="cloud-status-text" class="hidden md:inline text-pink-100">Mọi chỉnh sửa của bạn sẽ cập nhật trực tiếp lên web cho tất cả khách hàng.</span>
+                <span class="hidden md:inline text-pink-100">Mọi chỉnh sửa của bạn sẽ tự động cập nhật ngay lập tức trên mọi thiết bị của khách.</span>
             </div>
             <div class="flex items-center gap-2">
                 <button onclick="openAdminModal('tab-add')" class="bg-pink-500/40 hover:bg-pink-500/60 border border-pink-300/40 text-white font-semibold px-3 py-1.5 rounded-lg transition">
@@ -83,9 +83,6 @@
                 </button>
                 <button onclick="openAdminModal('tab-list')" class="bg-white text-blush-700 hover:bg-pink-50 font-bold px-3 py-1.5 rounded-lg transition shadow-sm">
                     <i class="fa-solid fa-sliders mr-1"></i>Quản Lý Menu & Shop
-                </button>
-                <button onclick="syncToFirebase(true)" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-3 py-1.5 rounded-lg transition shadow-sm" title="Đồng bộ ngay lập tức lên hệ thống">
-                    <i class="fa-solid fa-cloud-arrow-up mr-1"></i>Lưu Lên Mạng Ngay
                 </button>
                 <button onclick="logoutAdmin()" class="bg-blush-900/60 hover:bg-red-600 text-white font-medium px-3 py-1.5 rounded-lg transition border border-pink-400/30" title="Đăng xuất Admin">
                     <i class="fa-solid fa-right-from-bracket"></i>
@@ -135,7 +132,7 @@
                         Gửi Trao Yêu Thương Qua Từng <span class="text-blush-600 italic font-normal">Đóa Hoa Tinh Tế</span>
                     </h2>
                     <p class="text-gray-600 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                        Mỗi bó hoa tại tiệm được tuyển chọn từ những bông hoa đẹp nhất, gói ghém tỉ mỉ cùng thiệp chúc viết tay miễn phí và giao tận tay người thương nhanh chóng.
+                        Mỗi bó hoa tại tiệm được tuyển chọn từ những bông hoa đẹp nhất, gói ghém tỉ mỉ cùng thiệp chúc viết tay miễn phí và giao tận tay người thương chỉ trong 2 giờ.
                     </p>
                     <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1">
                         <a href="#menu-section" class="bg-blush-600 hover:bg-blush-700 text-white font-bold px-6 py-3.5 rounded-full text-sm shadow-lg shadow-blush-500/30 transition flex items-center gap-2">
@@ -181,7 +178,7 @@
                                 <i class="fa-solid fa-seedling"></i>
                             </div>
                             <div>
-                                <p class="text-xs font-bold text-gray-800">Hoa Đẹp 100%</p>
+                                <p class="text-xs font-bold text-gray-800">Hoa Mới 100%</p>
                                 <p class="text-[10px] text-gray-500">Hoa lụa - hoa sáp xinh</p>
                             </div>
                         </div>
@@ -260,7 +257,7 @@
     <!-- 5. LƯỚI SẢN PHẨM HOA -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10 flex-1 w-full">
         <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-            <!-- Sản phẩm sẽ được tự động tải từ Firebase Realtime Database -->
+            <!-- Sản phẩm sẽ được tải tự động từ Firebase -->
         </div>
     </main>
 
@@ -324,7 +321,7 @@
         <div class="bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl border border-pink-100 grid grid-cols-1 md:grid-cols-2 max-h-[90vh] overflow-y-auto">
             <div class="relative bg-pink-50 aspect-square md:aspect-auto">
                 <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
-                <span id="modal-badge" class="absolute top-3 left-3 bg-white/95 text-blush-700 text-xs font-bold px-3 py-1 rounded-full shadow">Mẫu Mới</span>
+                <span id="modal-badge" class="absolute top-3 left-3 bg-white/95 text-blush-700 text-xs font-bold px-3 py-1 rounded-full shadow">Best Seller</span>
                 <button onclick="closeProductModal()" class="md:hidden absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 text-gray-700 flex items-center justify-center shadow">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
@@ -389,7 +386,7 @@
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
-            <p class="text-xs text-gray-500 mb-4">Nhập tài khoản chủ shop để sửa giá, thêm mẫu hoa mới và lưu trực tiếp lên mạng.</p>
+            <p class="text-xs text-gray-500 mb-4">Nhập tài khoản chủ shop để mở bảng điều chỉnh giá hoa, hình ảnh và cài đặt cửa hàng trực tiếp.</p>
             <form onsubmit="handleAdminLogin(event)" class="space-y-3.5">
                 <div>
                     <label class="block text-xs font-bold text-gray-700 mb-1">Tài khoản Admin</label>
@@ -397,7 +394,7 @@
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-gray-700 mb-1">Mật khẩu</label>
-                    <input id="login-password" type="password" required placeholder="Nhập mật khẩu..." class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm focus:outline-none focus:border-blush-500">
+                    <input id="login-password" type="password" required placeholder="Mặc định: 123456" class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm focus:outline-none focus:border-blush-500">
                 </div>
                 <p id="login-error" class="hidden text-xs text-red-600 font-semibold bg-red-50 p-2 rounded-lg"><i class="fa-solid fa-circle-exclamation mr-1"></i>Sai tài khoản hoặc mật khẩu!</p>
                 <button type="submit" class="w-full bg-blush-600 hover:bg-blush-700 text-white font-bold py-3 rounded-xl text-sm transition shadow-md">
@@ -407,15 +404,15 @@
         </div>
     </div>
 
-    <!-- 9. MODAL QUẢN TRỊ ADMIN -->
+    <!-- 9. MODAL QUẢN TRỊ ADMIN (ĐỒNG BỘ TRỰC TIẾP FIREBASE) -->
     <div id="admin-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 hidden">
         <div class="bg-white rounded-3xl max-w-5xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border border-pink-200">
             <div class="bg-gradient-to-r from-blush-800 to-blush-600 text-white px-5 py-4 flex items-center justify-between">
                 <div>
                     <h3 class="font-bold text-base sm:text-lg flex items-center gap-2">
-                        <i class="fa-solid fa-sliders"></i> Bảng Quản Trị Trực Tuyến (Đồng Bộ Đám Mây)
+                        <i class="fa-solid fa-sliders"></i> Bảng Quản Trị Cửa Hàng Hoa (Live Cloud)
                     </h3>
-                    <p class="text-xs text-pink-100">Bấm Lưu là trang web tự động cập nhật ngay lập tức trên mọi thiết bị của khách hàng</p>
+                    <p class="text-xs text-pink-100">Bấm Lưu là tự động cập nhật trực tiếp lên trang web cho mọi khách hàng</p>
                 </div>
                 <button onclick="closeAdminModal()" class="text-white/80 hover:text-white w-9 h-9 rounded-full bg-white/10 flex items-center justify-center">
                     <i class="fa-solid fa-xmark text-lg"></i>
@@ -433,116 +430,106 @@
                 <div id="tab-list" class="space-y-3"></div>
 
                 <!-- TAB 2: THÊM MẪU HOA MỚI -->
-                <form id="tab-add" onsubmit="handleAddProduct(event)" class="hidden space-y-4 max-w-2xl mx-auto bg-blush-50/50 p-4 sm:p-6 rounded-2xl border border-pink-100">
-                    <h4 class="font-serif text-lg font-bold text-blush-800 border-b border-pink-100 pb-2">Thêm Mẫu Hoa Mới Vào Menu</h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="sm:col-span-2">
-                            <label class="block text-xs font-bold text-gray-700 mb-1">Tên mẫu hoa *</label>
-                            <input id="add-name" type="text" required placeholder="VD: Bó Hồng Kem Dâu Nàng Thơ" class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-700 mb-1">Danh mục hoa *</label>
-                            <select id="add-cat" class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm bg-white">
-                                <option value="bouquet">Hoa Bó (Bouquets)</option>
-                                <option value="basket">Giỏ & Lẵng Hoa</option>
-                                <option value="stand">Kệ Khai Trương</option>
-                                <option value="box">Hộp Hoa Cao Cấp</option>
-                                <option value="orchid">Lan Hồ Điệp</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-700 mb-1">Nhãn nổi bật (Góc ảnh)</label>
-                            <input id="add-badge" type="text" placeholder="VD: Best Seller, Mẫu Mới, Hot..." class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-700 mb-1">Giá Size M (VNĐ) *</label>
-                            <input id="add-price-m" type="number" required placeholder="VD: 250000" class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-700 mb-1">Giá Size L - VIP (VNĐ) *</label>
-                            <input id="add-price-l" type="number" required placeholder="VD: 400000" class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm">
-                        </div>
-                        <div class="sm:col-span-2">
-                            <label class="block text-xs font-bold text-gray-700 mb-1">Chọn ảnh hoa từ Máy tính / Điện thoại hoặc dán Link ảnh *</label>
-                            <div class="flex flex-col sm:flex-row gap-2">
-                                <input id="add-img" type="text" placeholder="Dán link ảnh hoặc bấm nút Chọn ảnh bên cạnh..." class="flex-1 px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm">
-                                <label class="bg-white hover:bg-pink-50 text-blush-700 border border-pink-300 font-bold px-4 py-2.5 rounded-xl text-xs cursor-pointer flex items-center justify-center gap-1.5 shrink-0 shadow-sm">
-                                    <i class="fa-solid fa-upload"></i> Tải ảnh từ máy
-                                    <input type="file" accept="image/*" class="hidden" onchange="handleImageUpload(event, 'add-img', 'add-img-preview')">
-                                </label>
+                <div id="tab-add" class="hidden max-w-xl mx-auto">
+                    <form onsubmit="handleAddProduct(event)" class="space-y-3.5 bg-blush-50/50 p-4 sm:p-5 rounded-2xl border border-pink-100">
+                        <h4 class="font-serif font-bold text-lg text-blush-800">Thêm Mẫu Hoa Mới Vào Menu</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div class="sm:col-span-2">
+                                <label class="block text-xs font-bold text-gray-700 mb-1">Tên mẫu hoa *</label>
+                                <input id="add-name" type="text" required placeholder="VD: Bó Hồng Kem Dâu Nàng Thơ" class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-sm">
                             </div>
-                            <img id="add-img-preview" src="" alt="" class="hidden mt-2 w-24 h-24 object-cover rounded-xl border border-pink-200">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">Danh mục *</label>
+                                <select id="add-cat" class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-sm bg-white">
+                                    <option value="bouquet">Hoa Bó (Bouquets)</option>
+                                    <option value="basket">Giỏ & Lẵng Hoa</option>
+                                    <option value="stand">Kệ Khai Trương</option>
+                                    <option value="box">Hộp Hoa Cao Cấp</option>
+                                    <option value="orchid">Lan Hồ Điệp</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">Nhãn nổi bật</label>
+                                <input id="add-badge" type="text" placeholder="VD: Best Seller, Mẫu Mới" class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">Giá Size M (VNĐ) *</label>
+                                <input id="add-price-m" type="number" required placeholder="VD: 250000" class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">Giá Size L VIP (VNĐ) *</label>
+                                <input id="add-price-l" type="number" required placeholder="VD: 350000" class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-sm">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label class="block text-xs font-bold text-gray-700 mb-1">Hình ảnh hoa (Tải ảnh từ máy hoặc dán Link ảnh)</label>
+                                <input id="add-img-file" type="file" accept="image/*" onchange="handleNewImageUpload(event)" class="w-full text-xs mb-2">
+                                <input id="add-img" type="text" placeholder="Hoặc dán link ảnh vào đây..." class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-sm">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label class="block text-xs font-bold text-gray-700 mb-1">Mô tả chi tiết</label>
+                                <textarea id="add-desc" rows="2" placeholder="VD: Hoa sáp thơm thiết kế sang trọng, giữ màu bền đẹp..." class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-sm"></textarea>
+                            </div>
                         </div>
-                        <div class="sm:col-span-2">
-                            <label class="block text-xs font-bold text-gray-700 mb-1">Dịp tặng (cách nhau bằng dấu phẩy)</label>
-                            <input id="add-occasions" type="text" placeholder="Sinh nhật, Kỷ niệm, Chúc mừng" class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm">
-                        </div>
-                        <div class="sm:col-span-2">
-                            <label class="block text-xs font-bold text-gray-700 mb-1">Mô tả chi tiết mẫu hoa</label>
-                            <textarea id="add-desc" rows="2" placeholder="Hoa thiết kế tỉ mỉ, tặng kèm thiệp viết tay..." class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm"></textarea>
-                        </div>
-                    </div>
-                    <button type="submit" class="w-full bg-blush-600 hover:bg-blush-700 text-white font-bold py-3 rounded-xl text-sm shadow-md transition">
-                        <i class="fa-solid fa-cloud-arrow-up mr-1"></i> Thêm Vào Menu & Lưu Lên Mạng
-                    </button>
-                </form>
+                        <button type="submit" class="w-full bg-blush-600 hover:bg-blush-700 text-white font-bold py-3 rounded-xl text-sm shadow-md transition">
+                            <i class="fa-solid fa-cloud-arrow-up mr-1"></i> Lưu & Đăng Mẫu Hoa Lên Web
+                        </button>
+                    </form>
+                </div>
 
-                <!-- TAB 3: CÀI ĐẶT THÔNG TIN TIỆM & MẬT KHẨU -->
-                <form id="tab-shop" onsubmit="handleSaveShopConfig(event)" class="hidden space-y-4 max-w-2xl mx-auto bg-blush-50/50 p-4 sm:p-6 rounded-2xl border border-pink-100">
-                    <h4 class="font-serif text-lg font-bold text-blush-800 border-b border-pink-100 pb-2">Thông Tin Cửa Hàng & Liên Hệ</h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- TAB 3: CÀI ĐẶT TIỆM -->
+                <div id="tab-shop" class="hidden max-w-xl mx-auto">
+                    <form onsubmit="handleSaveShopConfig(event)" class="space-y-3.5 bg-blush-50/50 p-4 sm:p-5 rounded-2xl border border-pink-100">
+                        <h4 class="font-serif font-bold text-lg text-blush-800">Thông Tin Cửa Hàng & Bảo Mật</h4>
                         <div>
                             <label class="block text-xs font-bold text-gray-700 mb-1">Tên tiệm hoa</label>
-                            <input id="cfg-name" type="text" required class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm">
+                            <input id="cfg-name" type="text" required class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-sm">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-gray-700 mb-1">Slogan dưới tên tiệm</label>
-                            <input id="cfg-slogan" type="text" required class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm">
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Khẩu hiệu (Slogan dưới tên tiệm)</label>
+                            <input id="cfg-slogan" type="text" required class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-sm">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-gray-700 mb-1">Số Zalo nhận đơn hàng *</label>
-                            <input id="cfg-phone" type="text" required class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm">
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Số điện thoại / Zalo nhận đơn hàng</label>
+                            <input id="cfg-phone" type="text" required class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-sm">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-gray-700 mb-1">Địa chỉ cửa hàng</label>
-                            <input id="cfg-address" type="text" required class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm">
-                        </div>
-                        <div class="sm:col-span-2">
-                            <label class="block text-xs font-bold text-gray-700 mb-1">Thông tin tài khoản Ngân hàng</label>
-                            <input id="cfg-bank" type="text" required class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm">
-                        </div>
-                        <div class="sm:col-span-2">
-                            <label class="block text-xs font-bold text-gray-700 mb-1">Giới thiệu ngắn ở chân trang (Footer)</label>
-                            <input id="cfg-desc" type="text" class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm">
+                            <input id="cfg-address" type="text" required class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-sm">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-gray-700 mb-1">Tài khoản Admin</label>
-                            <input id="cfg-user" type="text" required class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm">
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Thông tin Ngân hàng nhận cọc</label>
+                            <input id="cfg-bank" type="text" required class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-sm">
                         </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-700 mb-1">Mật khẩu Admin</label>
-                            <input id="cfg-pass" type="text" required class="w-full px-3.5 py-2.5 rounded-xl border border-pink-200 text-sm">
+                        <div class="grid grid-cols-2 gap-3 pt-2 border-t border-pink-200">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">Tài khoản Admin</label>
+                                <input id="cfg-user" type="text" required class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-1">Mật khẩu Admin</label>
+                                <input id="cfg-pass" type="text" required class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-sm">
+                            </div>
                         </div>
-                    </div>
-                    <button type="submit" class="w-full bg-blush-600 hover:bg-blush-700 text-white font-bold py-3 rounded-xl text-sm shadow-md transition">
-                        <i class="fa-solid fa-floppy-disk mr-1"></i> Lưu Cài Đặt Cửa Hàng Lên Đám Mây
-                    </button>
-                </form>
+                        <button type="submit" class="w-full bg-blush-600 hover:bg-blush-700 text-white font-bold py-3 rounded-xl text-sm shadow-md transition">
+                            <i class="fa-solid fa-floppy-disk mr-1"></i> Lưu Cài Đặt Trực Tiếp Lên Hệ Thống
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- 10. NGĂN KÉO GIỎ HÀNG & ĐẶT HOA QUA ZALO -->
-    <div id="cart-drawer" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex justify-end">
-        <div class="bg-white w-full max-w-md h-full flex flex-col shadow-2xl border-l border-pink-100">
+    <!-- 10. DRAWER GIỎ HÀNG & ĐẶT HOA QUA ZALO -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden justify-end">
+        <div class="bg-white w-full max-w-md h-full flex flex-col shadow-2xl overflow-hidden">
             <div class="p-4 sm:p-5 bg-blush-50 border-b border-pink-100 flex items-center justify-between">
                 <div class="flex items-center gap-2.5">
                     <div class="w-9 h-9 rounded-xl bg-blush-600 text-white flex items-center justify-center">
                         <i class="fa-solid fa-bag-shopping"></i>
                     </div>
                     <div>
-                        <h3 class="font-serif text-lg font-bold text-blush-800 leading-none">Giỏ Hoa Của Bạn</h3>
-                        <p class="text-[11px] text-gray-500 mt-1">Điền thông tin để gửi đơn nhanh qua Zalo</p>
+                        <h3 class="font-serif font-bold text-lg text-blush-800 leading-none">Giỏ Hoa Của Bạn</h3>
+                        <p class="text-[11px] text-gray-500 mt-1">Gửi đơn nhanh qua Zalo chỉ trong 1 chạm</p>
                     </div>
                 </div>
                 <button onclick="toggleCart(false)" class="w-8 h-8 rounded-full bg-white text-gray-500 hover:text-gray-800 flex items-center justify-center shadow-sm">
@@ -550,62 +537,568 @@
                 </button>
             </div>
 
-            <div class="p-4 sm:p-5 overflow-y-auto flex-1 space-y-5">
-                <div id="cart-items" class="space-y-3"></div>
+            <div class="p-4 sm:p-5 overflow-y-auto flex-1 space-y-4">
+                <div id="cart-items-list" class="space-y-3"></div>
 
                 <form id="checkout-form" onsubmit="submitOrderZalo(event)" class="space-y-3 pt-4 border-t border-pink-100">
                     <h4 class="font-bold text-xs uppercase tracking-wider text-blush-700">Thông Tin Người Nhận Hoa</h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                        <input id="ord-sender" type="text" required placeholder="Tên của bạn *" class="w-full px-3 py-2 rounded-xl border border-pink-200 text-xs focus:outline-none focus:border-blush-500">
-                        <input id="ord-phone" type="tel" required placeholder="SĐT của bạn *" class="w-full px-3 py-2 rounded-xl border border-pink-200 text-xs focus:outline-none focus:border-blush-500">
+                        <input id="order-sender" type="text" required placeholder="Tên của bạn *" class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-xs sm:text-sm">
+                        <input id="order-phone" type="tel" required placeholder="SĐT của bạn *" class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-xs sm:text-sm">
                     </div>
-                    <input id="ord-address" type="text" required placeholder="Địa chỉ nhận hoa chi tiết *" class="w-full px-3 py-2 rounded-xl border border-pink-200 text-xs focus:outline-none focus:border-blush-500">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                        <input id="ord-date" type="date" required class="w-full px-3 py-2 rounded-xl border border-pink-200 text-xs text-gray-700 focus:outline-none focus:border-blush-500">
-                        <input id="ord-time" type="text" placeholder="Giờ giao (VD: 9h sáng)" class="w-full px-3 py-2 rounded-xl border border-pink-200 text-xs focus:outline-none focus:border-blush-500">
-                    </div>
-                    <textarea id="ord-card" rows="2" placeholder="Nội dung ghi lên thiệp chúc mừng / băng rôn..." class="w-full px-3 py-2 rounded-xl border border-pink-200 text-xs focus:outline-none focus:border-blush-500"></textarea>
+                    <input id="order-address" type="text" required placeholder="Địa chỉ nhận hoa chi tiết *" class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-xs sm:text-sm">
+                    <input id="order-time" type="text" placeholder="Ngày & Giờ muốn giao (VD: 14h hôm nay)" class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-xs sm:text-sm">
+                    <textarea id="order-card" rows="2" placeholder="Nội dung ghi lên thiệp chúc mừng / băng rôn..." class="w-full px-3.5 py-2 rounded-xl border border-pink-200 text-xs sm:text-sm"></textarea>
 
-                    <div class="pt-3 border-t border-pink-100 space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-gray-600">Tổng cộng tạm tính:</span>
-                            <span id="cart-total" class="text-lg font-extrabold text-blush-600">0đ</span>
-                        </div>
-                        <button type="submit" class="w-full bg-gradient-to-r from-blush-600 to-blush-500 hover:from-blush-700 hover:to-blush-600 text-white font-bold py-3.5 rounded-xl text-xs sm:text-sm shadow-lg shadow-blush-500/25 transition flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-paper-plane"></i>
-                            <span>Gửi Đơn Đặt Hoa Qua Zalo Ngay</span>
-                        </button>
+                    <div class="bg-blush-50 p-3.5 rounded-2xl border border-pink-100 flex items-center justify-between">
+                        <span class="text-xs font-bold text-gray-700">Tổng thanh toán:</span>
+                        <span id="cart-total-price" class="text-lg font-extrabold text-blush-700">0đ</span>
                     </div>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-blush-600 to-blush-500 hover:from-blush-700 hover:to-blush-600 text-white font-bold py-3.5 rounded-xl text-sm shadow-lg shadow-blush-500/25 transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Xác Nhận & Gửi Đơn Qua Zalo</span>
+                    </button>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- 11. JAVASCRIPT XỬ LÝ ĐỒNG BỘ ĐÁM MÂY FIREBASE & QUẢN TRỊ -->
+    <!-- 11. MÃ NGUỒN JAVASCRIPT & ĐỒNG BỘ FIREBASE TRỰC TIẾP -->
     <script>
-        // ĐƯỜNG LINK FIREBASE REALTIME DATABASE CỦA ANH THƯ FLORIST
+        // ĐƯỜNG LINK FIREBASE REALTIME DATABASE CỦA BẠN
         const FIREBASE_DB_URL = "https://hoaanhthu-3600e-default-rtdb.asia-southeast1.firebasedatabase.app/storeData.json";
 
-        // Dữ liệu mặc định ban đầu
+        const DEFAULT_PRODUCTS = [
+            {
+                id: 1792630371752,
+                name: "Bó Hoa Hồng Kem Dâu",
+                category: "bouquet",
+                priceM: 200000,
+                priceL: 350000,
+                badge: "Mẫu Mới",
+                occasions: ["Sinh nhật", "Chúc mừng"],
+                image: "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80",
+                desc: "Hoa thiết kế trong ngày tại tiệm, phối giấy gói Hàn Quốc sang trọng."
+            },
+            {
+                id: 1792630371753,
+                name: "Giỏ Hoa Nắng Mai Rực Rỡ",
+                category: "basket",
+                priceM: 350000,
+                priceL: 500000,
+                badge: "Best Seller",
+                occasions: ["Khai trương", "Sinh nhật"],
+                image: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80",
+                desc: "Giỏ hoa tone hồng pastel ngọt ngào tặng người thương, bạn bè và đối tác."
+            }
+        ];
+
         const DEFAULT_SHOP_CONFIG = {
             name: "Anh Thư Florist",
             slogan: "Shop online hoa sáp - hoa lụa",
             phone: "0326013819",
             address: "Địa chỉ: Bắc Từ Liêm",
             bank: "Thanh toán: Trung",
-            desc: "Shop online hoa sáp - hoa lụa thiết kế theo yêu cầu cho các dịp Sinh nhật, Kỷ niệm, Tỏ tình, Khai trương và Sự kiện.",
             adminUser: "admin",
             adminPass: "123456"
         };
 
-        const DEFAULT_PRODUCTS = [
-            {
-                id: 1792630371752,
-                name: "Bó Hoa Hồng Kem Dâu Ngọt Ngào",
-                cat: "bouquet",
-                priceM: 200000,
-                priceL: 350000,
-                badge: "Mẫu Mới",
-                occasions: ["Sinh nhật", "Chúc mừng"],
-                desc: "Hoa thiết kế tỉ mỉ trong ngày tại tiệm, tặng kèm thiệp chúc mừng viết tay.",
-                img: "data:image/jpeg;base64,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
+        let products = [...DEFAULT_PRODUCTS];
+        let shopConfig = { ...DEFAULT_SHOP_CONFIG };
+        let cart = [];
+        let currentCategory = 'all';
+        let selectedSizes = {};
+        let isAdminLoggedIn = false;
+        let currentModalProductId = null;
+        let currentModalSize = 'M';
+
+        const CATEGORY_NAMES = {
+            bouquet: 'Hoa Bó',
+            basket: 'Giỏ & Lẵng',
+            stand: 'Kệ Khai Trương',
+            box: 'Hộp Hoa',
+            orchid: 'Lan Hồ Điệp'
+        };
+
+        function formatPrice(num) {
+            return Number(num || 0).toLocaleString('vi-VN') + 'đ';
+        }
+
+        function showToast(msg) {
+            const box = document.getElementById('toast-box');
+            document.getElementById('toast-msg').innerText = msg;
+            box.classList.remove('opacity-0', 'translate-y-2');
+            box.classList.add('opacity-100', 'translate-y-0');
+            setTimeout(() => {
+                box.classList.remove('opacity-100', 'translate-y-0');
+                box.classList.add('opacity-0', 'translate-y-2');
+            }, 2800);
+        }
+
+        // TẢI DỮ LIỆU TRỰC TIẾP TỪ FIREBASE KHI MỞ WEB
+        async function loadFromFirebase() {
+            try {
+                const res = await fetch(FIREBASE_DB_URL + "?t=" + Date.now());
+                const data = await res.json();
+                if (data && Array.isArray(data.products) && data.products.length > 0) {
+                    products = data.products;
+                    if (data.shopConfig) shopConfig = { ...DEFAULT_SHOP_CONFIG, ...data.shopConfig };
+                } else {
+                    await saveToFirebase(false);
+                }
+            } catch (err) {
+                console.error("Lỗi kết nối Firebase:", err);
+            }
+            applyShopConfigUI();
+            renderProducts();
+            if (isAdminLoggedIn) renderAdminList();
+        }
+
+        // LƯU TRỰC TIẾP LÊN FIREBASE KHI ADMIN BẤM LƯU
+        async function saveToFirebase(notify = true) {
+            try {
+                await fetch(FIREBASE_DB_URL, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ products, shopConfig, updatedAt: Date.now() })
+                });
+                if (notify) showToast("Đã lưu trực tiếp lên web thành công!");
+            } catch (err) {
+                alert("Lỗi khi lưu lên đám mây: " + err.message);
+            }
+        }
+
+        // NÉN ẢNH TỰ ĐỘNG ĐỂ KHÔNG BỊ NẶNG DATABASE
+        function compressImageFile(file, callback) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const MAX_WIDTH = 700;
+                    const scale = img.width > MAX_WIDTH ? MAX_WIDTH / img.width : 1;
+                    canvas.width = img.width * scale;
+                    canvas.height = img.height * scale;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    callback(canvas.toDataURL('image/jpeg', 0.78));
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function applyShopConfigUI() {
+            document.getElementById('display-shop-name').innerText = shopConfig.name;
+            document.getElementById('display-shop-slogan').innerText = shopConfig.slogan;
+            document.getElementById('display-shop-phone').innerText = shopConfig.phone;
+            document.getElementById('footer-shop-name').innerText = shopConfig.name;
+            document.getElementById('footer-shop-address').innerText = shopConfig.address;
+            document.getElementById('footer-shop-phone').innerText = shopConfig.phone;
+            document.getElementById('footer-shop-bank').innerText = shopConfig.bank;
+            document.getElementById('copyright-shop-name').innerText = shopConfig.name;
+
+            const zaloUrl = `https://zalo.me/${shopConfig.phone.replace(/\D/g, '')}`;
+            document.getElementById('header-zalo-link').href = zaloUrl;
+            document.getElementById('hero-zalo-btn').href = zaloUrl;
+            document.getElementById('floating-zalo').href = zaloUrl;
+        }
+
+        function setCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.className = "cat-btn bg-blush-600 text-white px-4 py-2 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition shadow-sm flex items-center gap-1.5";
+                } else {
+                    btn.className = "cat-btn bg-white text-gray-700 hover:bg-blush-50 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap border border-pink-200/80 transition flex items-center gap-1.5";
+                }
+            });
+            renderProducts();
+        }
+
+        function selectCardSize(id, size) {
+            selectedSizes[id] = size;
+            renderProducts();
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            const keyword = (document.getElementById('search-input')?.value || '').toLowerCase();
+            const priceFilter = document.getElementById('price-filter')?.value || 'all';
+
+            const filtered = products.filter(p => {
+                const matchCat = currentCategory === 'all' || p.category === currentCategory;
+                const matchSearch = p.name.toLowerCase().includes(keyword) || (p.desc || '').toLowerCase().includes(keyword);
+                let matchPrice = true;
+                if (priceFilter === 'under500') matchPrice = p.priceM < 500000;
+                else if (priceFilter === '500to1000') matchPrice = p.priceM >= 500000 && p.priceM <= 1000000;
+                else if (priceFilter === 'over1000') matchPrice = p.priceM > 1000000;
+                return matchCat && matchSearch && matchPrice;
+            });
+
+            document.getElementById('product-count-label').innerText = `${filtered.length} mẫu hoa`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500 text-sm">Không tìm thấy mẫu hoa phù hợp.</div>`;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(p => {
+                const sz = selectedSizes[p.id] || 'M';
+                const currentPrice = sz === 'M' ? p.priceM : p.priceL;
+                return `
+                <div class="bg-white rounded-3xl border border-pink-100/90 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group">
+                    <div class="relative aspect-[4/5] overflow-hidden bg-pink-50 cursor-pointer" onclick="openProductModal(${p.id})">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        ${p.badge ? `<span class="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-blush-700 text-[11px] font-extrabold px-3 py-1 rounded-full shadow-sm">${p.badge}</span>` : ''}
+                        <button type="button" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 hover:bg-blush-600 text-gray-700 hover:text-white flex items-center justify-center shadow-sm transition">
+                            <i class="fa-regular fa-eye text-xs"></i>
+                        </button>
+                    </div>
+                    <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between gap-1 mb-1">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-blush-500">${CATEGORY_NAMES[p.category] || 'Hoa Tươi'}</span>
+                            </div>
+                            <h3 onclick="openProductModal(${p.id})" class="font-serif font-bold text-base sm:text-lg text-gray-900 hover:text-blush-600 cursor-pointer line-clamp-1">${p.name}</h3>
+                            <p class="text-xs text-gray-500 mt-1 line-clamp-2 leading-relaxed">${p.desc || ''}</p>
+                        </div>
+                        <div class="mt-3.5 pt-3 border-t border-pink-100/80 space-y-2.5">
+                            <div class="grid grid-cols-2 gap-1.5 bg-blush-50/70 p-1 rounded-xl border border-pink-100">
+                                <button type="button" onclick="selectCardSize(${p.id}, 'M')" class="text-[11px] font-bold py-1 rounded-lg transition ${sz === 'M' ? 'bg-white text-blush-700 shadow-sm' : 'text-gray-500 hover:text-blush-600'}">Size M</button>
+                                <button type="button" onclick="selectCardSize(${p.id}, 'L')" class="text-[11px] font-bold py-1 rounded-lg transition ${sz === 'L' ? 'bg-white text-blush-700 shadow-sm' : 'text-gray-500 hover:text-blush-600'}">Size L (VIP)</button>
+                            </div>
+                            <div class="flex items-center justify-between gap-2">
+                                <div>
+                                    <span class="block text-[10px] text-gray-400">Giá niêm yết</span>
+                                    <span class="font-extrabold text-blush-600 text-sm sm:text-base">${formatPrice(currentPrice)}</span>
+                                </div>
+                                <button onclick="addToCart(${p.id}, '${sz}')" class="bg-blush-600 hover:bg-blush-700 text-white text-xs font-bold px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-sm active:scale-95">
+                                    <i class="fa-solid fa-plus"></i> Chọn hoa
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        // MODAL XEM CHI TIẾT SẢN PHẨM
+        function openProductModal(id) {
+            const p = products.find(x => x.id === id);
+            if (!p) return;
+            currentModalProductId = id;
+            currentModalSize = 'M';
+            document.getElementById('modal-img').src = p.image;
+            document.getElementById('modal-badge').innerText = p.badge || 'Hoa Thiết Kế';
+            document.getElementById('modal-cat').innerText = CATEGORY_NAMES[p.category] || 'HOA THIẾT KẾ';
+            document.getElementById('modal-title').innerText = p.name;
+            document.getElementById('modal-desc').innerText = p.desc || '';
+            document.getElementById('modal-price-m').innerText = formatPrice(p.priceM);
+            document.getElementById('modal-price-l').innerText = formatPrice(p.priceL);
+            selectModalSize('M');
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function selectModalSize(size) {
+            currentModalSize = size;
+            const p = products.find(x => x.id === currentModalProductId);
+            if (!p) return;
+            const price = size === 'M' ? p.priceM : p.priceL;
+            document.getElementById('modal-price').innerText = formatPrice(price);
+            document.getElementById('modal-btn-m').className = size === 'M' ? "p-2.5 rounded-xl border-2 border-blush-600 bg-blush-50 text-left transition" : "p-2.5 rounded-xl border border-pink-200 bg-white text-left transition";
+            document.getElementById('modal-btn-l').className = size === 'L' ? "p-2.5 rounded-xl border-2 border-blush-600 bg-blush-50 text-left transition" : "p-2.5 rounded-xl border border-pink-200 bg-white text-left transition";
+            document.getElementById('modal-add-btn').onclick = () => {
+                addToCart(p.id, size);
+                closeProductModal();
+            };
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        // GIỎ HÀNG & ĐẶT ĐƠN ZALO
+        function addToCart(id, size = 'M') {
+            const p = products.find(x => x.id === id);
+            if (!p) return;
+            const price = size === 'M' ? p.priceM : p.priceL;
+            const existing = cart.find(item => item.id === id && item.size === size);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ id: p.id, name: p.name, size, price, image: p.image, qty: 1 });
+            }
+            updateCartUI();
+            showToast(`Đã thêm "${p.name} (Size ${size})" vào giỏ!`);
+        }
+
+        function changeCartQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const count = cart.reduce((sum, i) => sum + i.qty, 0);
+            document.getElementById('cart-count').innerText = count;
+
+            const listEl = document.getElementById('cart-items-list');
+            const totalEl = document.getElementById('cart-total-price');
+
+            if (cart.length === 0) {
+                listEl.innerHTML = `<p class="text-center text-xs text-gray-400 py-8">Giỏ hoa của bạn đang trống.</p>`;
+                totalEl.innerText = '0đ';
+                return;
+            }
+
+            let total = 0;
+            listEl.innerHTML = cart.map((item, idx) => {
+                total += item.price * item.qty;
+                return `
+                <div class="flex items-center gap-3 bg-blush-50/60 p-2.5 rounded-2xl border border-pink-100">
+                    <img src="${item.image}" class="w-14 h-14 rounded-xl object-cover shrink-0">
+                    <div class="flex-1 min-w-0">
+                        <p class="text-xs font-bold text-gray-800 truncate">${item.name}</p>
+                        <p class="text-[11px] text-blush-600 font-semibold">Size ${item.size} - ${formatPrice(item.price)}</p>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <button type="button" onclick="changeCartQty(${idx}, -1)" class="w-6 h-6 rounded-lg bg-white border border-pink-200 text-xs font-bold">-</button>
+                        <span class="text-xs font-bold w-5 text-center">${item.qty}</span>
+                        <button type="button" onclick="changeCartQty(${idx}, 1)" class="w-6 h-6 rounded-lg bg-white border border-pink-200 text-xs font-bold">+</button>
+                    </div>
+                </div>`;
+            }).join('');
+
+            totalEl.innerText = formatPrice(total);
+        }
+
+        function toggleCart(show) {
+            const drawer = document.getElementById('cart-drawer');
+            if (show) {
+                updateCartUI();
+                drawer.classList.remove('hidden');
+                drawer.classList.add('flex');
+            } else {
+                drawer.classList.add('hidden');
+                drawer.classList.remove('flex');
+            }
+        }
+
+        function submitOrderZalo(e) {
+            e.preventDefault();
+            if (cart.length === 0) {
+                alert("Bạn vui lòng chọn ít nhất 1 mẫu hoa vào giỏ trước khi đặt nhé!");
+                return;
+            }
+            const sender = document.getElementById('order-sender').value;
+            const phone = document.getElementById('order-phone').value;
+            const address = document.getElementById('order-address').value;
+            const time = document.getElementById('order-time').value;
+            const card = document.getElementById('order-card').value;
+
+            let total = 0;
+            const itemsText = cart.map((i, idx) => {
+                total += i.price * i.qty;
+                return `${idx + 1}. ${i.name} (Size ${i.size}) x${i.qty} = ${formatPrice(i.price * i.qty)}`;
+            }).join('\n');
+
+            const orderMsg = `🌸 ĐƠN ĐẶT HOA MỚI - ${shopConfig.name.toUpperCase()} 🌸\n` +
+                `------------------------\n` +
+                `${itemsText}\n` +
+                `👉 Tổng cộng: ${formatPrice(total)}\n` +
+                `------------------------\n` +
+                `- Người đặt: ${sender} (${phone})\n` +
+                `- Giao đến: ${address}\n` +
+                `- Thời gian giao: ${time || 'Giao sớm nhất'}\n` +
+                `- Nội dung thiệp: ${card || 'Không có'}`;
+
+            navigator.clipboard?.writeText(orderMsg);
+            const cleanPhone = shopConfig.phone.replace(/\D/g, '');
+            alert("Đã sao chép thông tin đơn hàng! Hệ thống sẽ chuyển bạn sang Zalo của tiệm, bạn chỉ cần Dán (Paste) tin nhắn để gửi đơn nhé.");
+            window.open(`https://zalo.me/${cleanPhone}`, '_blank');
+        }
+
+        // ĐĂNG NHẬP & QUẢN TRỊ ADMIN
+        function openLoginModal() {
+            if (isAdminLoggedIn) {
+                openAdminModal('tab-list');
+                return;
+            }
+            document.getElementById('login-error').classList.add('hidden');
+            document.getElementById('login-modal').classList.remove('hidden');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('login-modal').classList.add('hidden');
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('login-username').value.trim();
+            const p = document.getElementById('login-password').value.trim();
+            if (u === shopConfig.adminUser && p === shopConfig.adminPass) {
+                isAdminLoggedIn = true;
+                closeLoginModal();
+                document.getElementById('admin-top-bar').classList.remove('hidden');
+                showToast("Đăng nhập Admin thành công!");
+                openAdminModal('tab-list');
+            } else {
+                document.getElementById('login-error').classList.remove('hidden');
+            }
+        }
+
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            document.getElementById('admin-top-bar').classList.add('hidden');
+            closeAdminModal();
+            showToast("Đã đăng xuất chế độ Admin");
+        }
+
+        function openAdminModal(tab = 'tab-list') {
+            renderAdminList();
+            fillShopConfigForm();
+            switchAdminTab(tab);
+            document.getElementById('admin-modal').classList.remove('hidden');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('admin-modal').classList.add('hidden');
+        }
+
+        function switchAdminTab(tabId) {
+            ['tab-list', 'tab-add', 'tab-shop'].forEach(t => {
+                document.getElementById(t).classList.toggle('hidden', t !== tabId);
+                const btn = document.getElementById('btn-' + t);
+                if (t === tabId) {
+                    btn.className = "admin-tab-btn bg-white text-blush-700 px-4 py-2.5 rounded-t-xl border-t border-x border-pink-200";
+                } else {
+                    btn.className = "admin-tab-btn text-gray-600 hover:text-blush-700 px-4 py-2.5 rounded-t-xl";
+                }
+            });
+        }
+
+        function renderAdminList() {
+            const container = document.getElementById('tab-list');
+            container.innerHTML = products.map(p => `
+                <div class="bg-blush-50/50 border border-pink-200 rounded-2xl p-3 flex flex-col lg:flex-row items-center gap-3">
+                    <img id="preview-${p.id}" src="${p.image}" class="w-16 h-16 rounded-xl object-cover border border-pink-200 shrink-0">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 flex-1 w-full">
+                        <div>
+                            <label class="text-[10px] font-bold text-gray-500">Tên mẫu hoa</label>
+                            <input id="edit-name-${p.id}" type="text" value="${p.name}" class="w-full px-2.5 py-1.5 rounded-lg border border-pink-200 text-xs font-bold">
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-bold text-gray-500">Giá Size M (đ)</label>
+                            <input id="edit-pm-${p.id}" type="number" value="${p.priceM}" class="w-full px-2.5 py-1.5 rounded-lg border border-pink-200 text-xs font-bold text-blush-700">
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-bold text-gray-500">Giá Size L (đ)</label>
+                            <input id="edit-pl-${p.id}" type="number" value="${p.priceL}" class="w-full px-2.5 py-1.5 rounded-lg border border-pink-200 text-xs font-bold text-blush-700">
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-bold text-gray-500">Đổi ảnh mới từ máy</label>
+                            <input type="file" accept="image/*" onchange="handleEditImageUpload(event, ${p.id})" class="w-full text-[11px]">
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 shrink-0">
+                        <button onclick="saveProductRow(${p.id})" class="bg-blush-600 hover:bg-blush-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition">
+                            <i class="fa-solid fa-floppy-disk mr-1"></i>Lưu
+                        </button>
+                        <button onclick="deleteProductRow(${p.id})" class="bg-red-100 hover:bg-red-200 text-red-600 text-xs font-bold px-3 py-2 rounded-xl transition">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function handleEditImageUpload(event, id) {
+            const file = event.target.files[0];
+            if (!file) return;
+            compressImageFile(file, (base64) => {
+                const p = products.find(x => x.id === id);
+                if (p) {
+                    p.image = base64;
+                    document.getElementById(`preview-${id}`).src = base64;
+                }
+            });
+        }
+
+        async function saveProductRow(id) {
+            const p = products.find(x => x.id === id);
+            if (!p) return;
+            p.name = document.getElementById(`edit-name-${id}`).value.trim();
+            p.priceM = Number(document.getElementById(`edit-pm-${id}`).value) || 0;
+            p.priceL = Number(document.getElementById(`edit-pl-${id}`).value) || 0;
+            renderProducts();
+            await saveToFirebase(true);
+        }
+
+        async function deleteProductRow(id) {
+            if (!confirm("Bạn có chắc chắn muốn xóa mẫu hoa này khỏi menu?")) return;
+            products = products.filter(x => x.id !== id);
+            renderAdminList();
+            renderProducts();
+            await saveToFirebase(true);
+        }
+
+        function handleNewImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            compressImageFile(file, (base64) => {
+                document.getElementById('add-img').value = base64;
+                showToast("Đã xử lý ảnh tải lên!");
+            });
+        }
+
+        async function handleAddProduct(e) {
+            e.preventDefault();
+            const newProd = {
+                id: Date.now(),
+                name: document.getElementById('add-name').value.trim(),
+                category: document.getElementById('add-cat').value,
+                badge: document.getElementById('add-badge').value.trim() || "Mẫu Mới",
+                priceM: Number(document.getElementById('add-price-m').value) || 200000,
+                priceL: Number(document.getElementById('add-price-l').value) || 350000,
+                image: document.getElementById('add-img').value.trim() || "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80",
+                desc: document.getElementById('add-desc').value.trim() || "Hoa tươi thiết kế trong ngày tại tiệm.",
+                occasions: ["Sinh nhật", "Chúc mừng"]
+            };
+            products.unshift(newProd);
+            e.target.reset();
+            renderProducts();
+            renderAdminList();
+            switchAdminTab('tab-list');
+            await saveToFirebase(true);
+        }
+
+        function fillShopConfigForm() {
+            document.getElementById('cfg-name').value = shopConfig.name;
+            document.getElementById('cfg-slogan').value = shopConfig.slogan;
+            document.getElementById('cfg-phone').value = shopConfig.phone;
+            document.getElementById('cfg-address').value = shopConfig.address;
+            document.getElementById('cfg-bank').value = shopConfig.bank;
+            document.getElementById('cfg-user').value = shopConfig.adminUser;
+            document.getElementById('cfg-pass').value = shopConfig.adminPass;
+        }
+
+        async function handleSaveShopConfig(e) {
+            e.preventDefault();
+            shopConfig.name = document.getElementById('cfg-name').value.trim();
+            shopConfig.slogan = document.getElementById('cfg-slogan').value.trim();
+            shopConfig.phone = document.getElementById('cfg-phone').value.trim();
+            shopConfig.address = document.getElementById('cfg-address').value.trim();
+            shopConfig.bank = document.getElementById('cfg-bank').value.trim();
+            shopConfig.adminUser = document.getElementById('cfg-user').value.trim();
+            shopConfig.adminPass = document.getElementById('cfg-pass').value.trim();
+            applyShopConfigUI();
+            await saveToFirebase(true);
+        }
+
+        // KHỞI ĐỘNG TRANG WEB
+        window.addEventListener('DOMContentLoaded', loadFromFirebase);
+    </script>
+</body>
+</html>
